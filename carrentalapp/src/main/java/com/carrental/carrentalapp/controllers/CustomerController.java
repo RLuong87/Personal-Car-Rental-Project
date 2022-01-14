@@ -1,7 +1,7 @@
 package com.carrental.carrentalapp.controllers;
 
 import com.carrental.carrentalapp.models.Customer;
-//import com.carrental.carrentalapp.repositories.CustomerRepository;
+import com.carrental.carrentalapp.repositories.CustomerRepository;
 import com.carrental.carrentalapp.models.Customer;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/customers")
 public class CustomerController {
