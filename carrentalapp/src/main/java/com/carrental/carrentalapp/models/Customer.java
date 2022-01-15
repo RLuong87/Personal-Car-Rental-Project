@@ -15,6 +15,7 @@ public class Customer {
     private String role;
     private String dob;
     private String phoneNumber;
+    private Car car;
 
     @OneToMany
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
@@ -90,6 +91,14 @@ public class Customer {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public Set<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(Set<Car> cars) {
+        this.cars = cars;
     }
 
     public String toString() {
