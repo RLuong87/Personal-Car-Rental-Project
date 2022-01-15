@@ -1,8 +1,7 @@
 package com.carrental.carrentalapp.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Car {
@@ -15,7 +14,22 @@ public class Car {
     private Integer year;
     private String color;
 
+    @ManyToOne
+    @JoinTable(
+            name = "car_names",
+            joinColumns = @JoinColumn(name = "car_id"),
+            inverseJoinColumns = @JoinColumn(name = "customer_id")
+    )
+    private Set<Customer> customers;
+
     public Car() {
+    }
+
+    public Car(String make, String model, Integer year, String color) {
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        this.color = color;
     }
 
     public Long getId() {

@@ -1,18 +1,31 @@
 package com.carrental.carrentalapp.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Customer {
 
-    private @Id @GeneratedValue Long id;
+    private @Id
+    @GeneratedValue
+    Long id;
     private String name;
     private String email;
     private String role;
     private String dob;
     private String phoneNumber;
+
+    @OneToMany
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+//    private List<Car> cars;
+    @ManyToMany
+    @JoinTable(
+            name = "car_names",
+            joinColumns = @JoinColumn(name = "customer_id"),
+            inverseJoinColumns = @JoinColumn(name = "car_id")
+    )
+    private Set<Car> cars;
 
     public Customer() {
 
@@ -23,14 +36,7 @@ public class Customer {
         this.email = email;
     }
 
-    public Customer(Long id, String name, String email) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-    }
-
-    public Customer(Long id, String name, String email, String role, String dob, String phoneNumber) {
-        this.id = id;
+    public Customer(String name, String email, String role, String dob, String phoneNumber) {
         this.name = name;
         this.email = email;
         this.role = role;

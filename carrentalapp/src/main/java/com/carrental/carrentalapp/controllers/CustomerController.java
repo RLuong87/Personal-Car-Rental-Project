@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("/api/customers")
 public class CustomerController {
 
     private Map<Long, Customer> customers = new HashMap<>();
@@ -27,9 +27,9 @@ public class CustomerController {
 
     public CustomerController() {
         Long id = idCounter.incrementAndGet();
-        customers.put(id, new Customer(id, "Rich Luong", "rich@test.com", "customer", "08/14/1987", "401-000-000"));
+        customers.put(id, new Customer("Rich Luong", "rich@test.com", "customer", "08/14/1987", "401-000-000"));
         id = idCounter.incrementAndGet();
-        customers.put(id, new Customer(id, "Aly", "aly@testing.com", "customer", "02/22/2001", "401-000-000"));
+        customers.put(id, new Customer("Aly", "aly@testing.com", "customer", "02/22/2001", "401-000-000"));
     }
 
 
