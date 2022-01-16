@@ -7,22 +7,20 @@ import java.util.Set;
 @Entity
 public class Customer {
 
-    private @Id
+    @Id
     @GeneratedValue
-    Long id;
+    private Long id;
     private String name;
     private String email;
     private String role;
     private String dob;
     private String phoneNumber;
-    private Car car;
-
-    @OneToMany
-    @JoinColumn(name = "customer_id", referencedColumnName = "id")
-//    private List<Car> cars;
+//    @OneToMany
+//    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+//    private List<Geekout> geekouts;
     @ManyToMany
     @JoinTable(
-            name = "car_names",
+            name = "customer_cars",
             joinColumns = @JoinColumn(name = "customer_id"),
             inverseJoinColumns = @JoinColumn(name = "car_id")
     )
@@ -37,12 +35,13 @@ public class Customer {
         this.email = email;
     }
 
-    public Customer(String name, String email, String role, String dob, String phoneNumber) {
+    public Customer(String name, String email, String role, String dob, String phoneNumber, Set<Car> cars) {
         this.name = name;
         this.email = email;
         this.role = role;
         this.dob = dob;
         this.phoneNumber = phoneNumber;
+        this.cars = cars;
     }
 
     public Long getId() {

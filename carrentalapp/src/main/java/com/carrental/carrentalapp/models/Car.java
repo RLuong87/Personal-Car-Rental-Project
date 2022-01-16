@@ -6,17 +6,17 @@ import java.util.Set;
 @Entity
 public class Car {
 
-    private @Id
-    @GeneratedValue
-    Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String make;
     private String model;
     private Integer year;
     private String color;
 
-    @ManyToOne
+    @ManyToMany
     @JoinTable(
-            name = "car_names",
+            name = "customer_cars",
             joinColumns = @JoinColumn(name = "car_id"),
             inverseJoinColumns = @JoinColumn(name = "customer_id")
     )
@@ -25,11 +25,12 @@ public class Car {
     public Car() {
     }
 
-    public Car(String make, String model, Integer year, String color) {
+    public Car(String make, String model, Integer year, String color, Set<Customer> customers) {
         this.make = make;
         this.model = model;
         this.year = year;
         this.color = color;
+        this.customers = customers;
     }
 
     public Long getId() {

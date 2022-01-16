@@ -19,7 +19,6 @@ public class CarController {
     Routes to build
     Get information for all cars (Customers will only see cars available)
 
-
      */
 
     @Autowired

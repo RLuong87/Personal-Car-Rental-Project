@@ -34,12 +34,12 @@ public class CustomerController {
     @Autowired
     private CustomerRepository repository;
 
-    public CustomerController() {
-        Long id = idCounter.incrementAndGet();
-        customers.put(id, new Customer("Rich Luong", "rich@test.com", "customer", "08/14/1987", "401-000-000"));
-        id = idCounter.incrementAndGet();
-        customers.put(id, new Customer("Aly", "aly@testing.com", "customer", "02/22/2001", "401-000-000"));
-    }
+//    public CustomerController() {
+//        Long id = idCounter.incrementAndGet();
+//        customers.put(id, new Customer("Rich Luong", "rich@test.com", "customer", "08/14/1987", "401-000-000"));
+//        id = idCounter.incrementAndGet();
+//        customers.put(id, new Customer("Aly", "aly@testing.com", "customer", "02/22/2001", "401-000-000"));
+//    }
 
 
     @GetMapping
@@ -60,7 +60,7 @@ public class CustomerController {
         return newCustomer;
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public @ResponseBody Customer updateCustomer(@PathVariable Long id, @RequestBody Customer updates) {
         Customer customer = repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
@@ -69,14 +69,9 @@ public class CustomerController {
         if (updates.getDob() != null) customer.setDob(updates.getDob());
         if (updates.getRole() != null) customer.setRole(updates.getRole());
         if (updates.getPhoneNumber() != null) customer.setPhoneNumber(updates.getPhoneNumber());
+        if (updates.getCars() != null) customer.setCars(updates.getCars());
 
         return repository.save(customer);
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteCustomer(@PathVariable Long id) {
-        repository.deleteById(id);
-        return new ResponseEntity<>("Deleted", HttpStatus.OK);
     }
 
     @PutMapping("/car")
@@ -87,4 +82,9 @@ public class CustomerController {
         return repository.save(customer);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteCustomer(@PathVariable Long id) {
+        repository.deleteById(id);
+        return new ResponseEntity<>("Deleted", HttpStatus.OK);
+    }
 }
