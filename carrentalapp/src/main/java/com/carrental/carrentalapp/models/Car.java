@@ -13,7 +13,6 @@ public class Car {
     private String model;
     private Integer year;
     private String color;
-
     @ManyToMany
     @JoinTable(
             name = "customer_cars",
@@ -73,7 +72,15 @@ public class Car {
         this.color = color;
     }
 
+    public Set<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(Set<Customer> customers) {
+        this.customers = customers;
+    }
+
     public String toString() {
-        return String.format("Customer(id=%s, make=%s, model=%s, year=%s, color=%s)", id.toString(), make, model, year, color);
+        return String.format("Customer(id=%s, make=%s, model=%s, year=%s, color=%s, customers=%s)", id.toString(), make, model, year, color, customers);
     }
 }

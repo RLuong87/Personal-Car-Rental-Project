@@ -30,11 +30,6 @@ public class Customer {
 
     }
 
-    public Customer(String name, String email) {
-        this.name = name;
-        this.email = email;
-    }
-
     public Customer(String name, String email, String role, String dob, String phoneNumber, Set<Car> cars) {
         this.name = name;
         this.email = email;
@@ -101,6 +96,6 @@ public class Customer {
     }
 
     public String toString() {
-        return String.format("Customer(id=%s, name=%s, role=%s, email=%s, dob=%s, phoneNumber=%s)", id.toString(), name, email, role, dob, phoneNumber);
+        return String.format("Customer(id=%s, name=%s, role=%s, email=%s, dob=%s, phoneNumber=%s, cars=%s)", id.toString(), name, email, role, dob, phoneNumber, cars);
     }
 }

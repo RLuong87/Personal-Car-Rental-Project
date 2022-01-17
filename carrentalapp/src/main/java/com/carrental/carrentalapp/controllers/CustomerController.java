@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,8 +22,8 @@ import java.util.concurrent.atomic.AtomicLong;
 @RequestMapping("/api/customers")
 public class CustomerController {
 
-    private Map<Long, Customer> customers = new HashMap<>();
-    private AtomicLong idCounter = new AtomicLong();
+    private final Map<Long, Customer> customers = new HashMap<>();
+    private final AtomicLong idCounter = new AtomicLong();
 //    private final CustomerRepository repository;
 //
 //    public CustomerController(CustomerRepository repository) {
