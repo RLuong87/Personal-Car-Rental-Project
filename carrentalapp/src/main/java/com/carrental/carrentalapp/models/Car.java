@@ -24,12 +24,11 @@ public class Car {
     public Car() {
     }
 
-    public Car(String make, String model, Integer year, String color, Set<Customer> customers) {
+    public Car(String make, String model, Integer year, String color) {
         this.make = make;
         this.model = model;
         this.year = year;
         this.color = color;
-        this.customers = customers;
     }
 
     public Long getId() {
@@ -72,15 +71,4 @@ public class Car {
         this.color = color;
     }
 
-    public Set<Customer> getCustomers() {
-        return customers;
-    }
-
-    public void setCustomers(Set<Customer> customers) {
-        this.customers = customers;
-    }
-
-    public String toString() {
-        return String.format("Customer(id=%s, make=%s, model=%s, year=%s, color=%s, customers=%s)", id.toString(), make, model, year, color, customers);
-    }
 }

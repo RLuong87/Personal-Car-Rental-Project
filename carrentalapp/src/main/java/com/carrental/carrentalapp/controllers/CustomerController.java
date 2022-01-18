@@ -68,7 +68,6 @@ public class CustomerController {
         if (updates.getDob() != null) customer.setDob(updates.getDob());
         if (updates.getRole() != null) customer.setRole(updates.getRole());
         if (updates.getPhoneNumber() != null) customer.setPhoneNumber(updates.getPhoneNumber());
-        if (updates.getCars() != null) customer.setCars(updates.getCars());
 
         return repository.save(customer);
     }

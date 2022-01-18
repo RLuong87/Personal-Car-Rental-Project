@@ -94,8 +94,4 @@ public class Customer {
     public void setCars(Set<Car> cars) {
         this.cars = cars;
     }
-
-    public String toString() {
-        return String.format("Customer(id=%s, name=%s, role=%s, email=%s, dob=%s, phoneNumber=%s, cars=%s)", id.toString(), name, email, role, dob, phoneNumber, cars);
-    }
 }

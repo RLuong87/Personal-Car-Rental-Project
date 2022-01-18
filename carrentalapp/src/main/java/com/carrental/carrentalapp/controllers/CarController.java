@@ -24,12 +24,9 @@ public class CarController {
     Get information for all cars (Customers will only see cars available)
 
      */
-    private final Map<Long, Car> cars = new HashMap<>();
-    private final AtomicLong idCounter = new AtomicLong();
 
     @Autowired
     private CarRepository repository;
-
 
     @GetMapping
     public List<Car> getAllCars() {
@@ -47,17 +44,9 @@ public class CarController {
     }
 
     @PostMapping
-    public Car newCar(@RequestBody Car newCar) {
-        Long id = idCounter.incrementAndGet();
-        newCar.setId(id);
-        cars.put(id, newCar);
-        return newCar;
+    public Car createCar(@RequestBody Car newCar) {
+        return repository.save(newCar);
     }
-
-//    @PostMapping
-//    public Car createCar(@RequestBody Car newCar) {
-//        return repository.save(newCar);
-//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteCar(@PathVariable Long id) {
