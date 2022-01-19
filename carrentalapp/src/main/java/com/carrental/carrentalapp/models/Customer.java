@@ -1,8 +1,6 @@
 package com.carrental.carrentalapp.models;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 public class Customer {
@@ -13,30 +11,43 @@ public class Customer {
     private String name;
     private String email;
     private String role;
+    private String gender;
     private String dob;
     private String phoneNumber;
+    private String[] vehicles;
 //    @OneToMany
 //    @JoinColumn(name = "customer_id", referencedColumnName = "id")
 //    private List<Geekout> geekouts;
-    @ManyToMany
-    @JoinTable(
-            name = "customer_cars",
-            joinColumns = @JoinColumn(name = "customer_id"),
-            inverseJoinColumns = @JoinColumn(name = "car_id")
-    )
-    private Set<Car> cars;
+//    @ManyToMany
+//    @JoinTable(
+//            name = "customer_cars",
+//            joinColumns = @JoinColumn(name = "customer_id"),
+//            inverseJoinColumns = @JoinColumn(name = "car_id")
+//    )
+//    private Set<Car> cars;
 
     public Customer() {
 
     }
 
-    public Customer(String name, String email, String role, String dob, String phoneNumber, Set<Car> cars) {
+//    public Customer(String name, String email, String role, String dob, String phoneNumber, Set<Car> cars) {
+//        this.name = name;
+//        this.email = email;
+//        this.role = role;
+//        this.dob = dob;
+//        this.phoneNumber = phoneNumber;
+//        this.cars = cars;
+//    }
+
+
+    public Customer(String name, String email, String role, String gender, String dob, String phoneNumber, String[] vehicles) {
         this.name = name;
         this.email = email;
         this.role = role;
+        this.gender = gender;
         this.dob = dob;
         this.phoneNumber = phoneNumber;
-        this.cars = cars;
+        this.vehicles = vehicles;
     }
 
     public Long getId() {
@@ -87,11 +98,28 @@ public class Customer {
         this.role = role;
     }
 
-    public Set<Car> getCars() {
-        return cars;
+//    public Set<Car> getCars() {
+//        return cars;
+//    }
+//
+//    public void setCars(Set<Car> cars) {
+//        this.cars = cars;
+//    }
+
+
+    public String getGender() {
+        return gender;
     }
 
-    public void setCars(Set<Car> cars) {
-        this.cars = cars;
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String[] getVehicles() {
+        return vehicles;
+    }
+
+    public void setVehicles(String[] vehicles) {
+        this.vehicles = vehicles;
     }
 }

@@ -13,13 +13,13 @@ public class Car {
     private String model;
     private Integer year;
     private String color;
-    @ManyToMany
-    @JoinTable(
-            name = "customer_cars",
-            joinColumns = @JoinColumn(name = "car_id"),
-            inverseJoinColumns = @JoinColumn(name = "customer_id")
-    )
-    private Set<Customer> customers;
+//    @ManyToMany
+//    @JoinTable(
+//            name = "customer_cars",
+//            joinColumns = @JoinColumn(name = "car_id"),
+//            inverseJoinColumns = @JoinColumn(name = "customer_id")
+//    )
+//    private Set<Customer> customers;
 
     public Car() {
     }
@@ -30,6 +30,14 @@ public class Car {
         this.year = year;
         this.color = color;
     }
+
+//    public Car(String make, String model, Integer year, String color, Set<Customer> customers) {
+//        this.make = make;
+//        this.model = model;
+//        this.year = year;
+//        this.color = color;
+//        this.customers = customers;
+//    }
 
     public Long getId() {
         return id;
@@ -71,4 +79,11 @@ public class Car {
         this.color = color;
     }
 
+//    public Set<Customer> getCustomers() {
+//        return customers;
+//    }
+//
+//    public void setCustomers(Set<Customer> customers) {
+//        this.customers = customers;
+//    }
 }
