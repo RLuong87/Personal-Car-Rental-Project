@@ -1,6 +1,7 @@
 package com.carrental.carrentalapp.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Customer {
@@ -10,40 +11,21 @@ public class Customer {
     private Long id;
     private String name;
     private String email;
-    private String role;
     private String gender;
     private String dob;
     private String phoneNumber;
     private String[] vehicles;
-//    @OneToMany
-//    @JoinColumn(name = "customer_id", referencedColumnName = "id")
-//    private List<Geekout> geekouts;
-//    @ManyToMany
-//    @JoinTable(
-//            name = "customer_cars",
-//            joinColumns = @JoinColumn(name = "customer_id"),
-//            inverseJoinColumns = @JoinColumn(name = "car_id")
-//    )
-//    private Set<Car> cars;
+    @OneToMany
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    private List<RentalStatus> rentals;
 
     public Customer() {
 
     }
 
-//    public Customer(String name, String email, String role, String dob, String phoneNumber, Set<Car> cars) {
-//        this.name = name;
-//        this.email = email;
-//        this.role = role;
-//        this.dob = dob;
-//        this.phoneNumber = phoneNumber;
-//        this.cars = cars;
-//    }
-
-
-    public Customer(String name, String email, String role, String gender, String dob, String phoneNumber, String[] vehicles) {
+    public Customer(String name, String email, String gender, String dob, String phoneNumber, String[] vehicles) {
         this.name = name;
         this.email = email;
-        this.role = role;
         this.gender = gender;
         this.dob = dob;
         this.phoneNumber = phoneNumber;
@@ -89,23 +71,6 @@ public class Customer {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-//    public Set<Car> getCars() {
-//        return cars;
-//    }
-//
-//    public void setCars(Set<Car> cars) {
-//        this.cars = cars;
-//    }
-
 
     public String getGender() {
         return gender;

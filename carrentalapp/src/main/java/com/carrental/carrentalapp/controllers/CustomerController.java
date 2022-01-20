@@ -46,7 +46,6 @@ public class CustomerController {
         if (updates.getEmail() != null) customer.setEmail(updates.getEmail());
         if (updates.getDob() != null) customer.setDob(updates.getDob());
         if (updates.getGender() != null) customer.setGender(updates.getGender());
-        if (updates.getRole() != null) customer.setRole(updates.getRole());
         if (updates.getPhoneNumber() != null) customer.setPhoneNumber(updates.getPhoneNumber());
         if (updates.getVehicles() != null) customer.setVehicles(updates.getVehicles());
 
