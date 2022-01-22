@@ -1,6 +1,6 @@
 package com.carrental.carrentalapp.controllers;
 
-import com.carrental.carrentalapp.models.RentalStatus;
+import com.carrental.carrentalapp.models.rentals.RentalStatus;
 import com.carrental.carrentalapp.repositories.RentalStatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,6 +41,6 @@ public class RentalStatusController {
 
     @GetMapping("/customer/{cId}")
     public ResponseEntity<List<RentalStatus>> getByCustomerId(@PathVariable Long cId) {
-        return new ResponseEntity<>(repository.findCustomerById(cId), HttpStatus.OK);
+        return new ResponseEntity<>(repository.findAllByCustomer_id(cId), HttpStatus.OK);
     }
 }

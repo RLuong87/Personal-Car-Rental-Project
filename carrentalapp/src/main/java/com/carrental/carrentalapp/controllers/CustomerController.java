@@ -1,6 +1,6 @@
 package com.carrental.carrentalapp.controllers;
 
-import com.carrental.carrentalapp.models.Customer;
+import com.carrental.carrentalapp.models.customer.Customer;
 import com.carrental.carrentalapp.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -47,18 +47,18 @@ public class CustomerController {
         if (updates.getDob() != null) customer.setDob(updates.getDob());
         if (updates.getGender() != null) customer.setGender(updates.getGender());
         if (updates.getPhoneNumber() != null) customer.setPhoneNumber(updates.getPhoneNumber());
-        if (updates.getVehicles() != null) customer.setVehicles(updates.getVehicles());
+        if (updates.vehicles != null) customer.vehicles = updates.vehicles;
 
         return repository.save(customer);
     }
 
-//    @PutMapping("/car")
-//    public Customer addCar(@RequestBody Customer updates) {
-//        Customer customer = repository.findById(updates.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-//
-//        customer.getCars().addAll(updates.getCars());
-//        return repository.save(customer);
-//    }
+    @PutMapping("/vehicle")
+    public Customer addCar(@RequestBody Customer updates) {
+        Customer customer = repository.findById(updates.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        customer.vehicles.addAll(updates.vehicles);
+        return repository.save(customer);
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteCustomer(@PathVariable Long id) {

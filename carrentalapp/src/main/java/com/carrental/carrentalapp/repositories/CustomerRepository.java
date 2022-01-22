@@ -1,9 +1,8 @@
 package com.carrental.carrentalapp.repositories;
 
-import com.carrental.carrentalapp.models.Customer;
+import com.carrental.carrentalapp.models.customer.Customer;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 

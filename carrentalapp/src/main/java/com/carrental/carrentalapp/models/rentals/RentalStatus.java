@@ -1,4 +1,6 @@
-package com.carrental.carrentalapp.models;
+package com.carrental.carrentalapp.models.rentals;
+
+import com.carrental.carrentalapp.models.customer.Customer;
 
 import javax.persistence.*;
 

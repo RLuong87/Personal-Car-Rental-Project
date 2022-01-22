@@ -1,7 +1,11 @@
-package com.carrental.carrentalapp.models;
+package com.carrental.carrentalapp.models.customer;
+
+import com.carrental.carrentalapp.models.rentals.RentalStatus;
+import com.carrental.carrentalapp.models.vehicle.Vehicle;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Customer {
@@ -14,21 +18,35 @@ public class Customer {
     private String gender;
     private String dob;
     private String phoneNumber;
-    private String[] vehicles;
+//    private String[] vehicles;
     @OneToMany
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private List<RentalStatus> rentals;
+    @ManyToMany
+    @JoinTable(
+            name = "customer_vehicle",
+            joinColumns = @JoinColumn(name = "customer_id"),
+            inverseJoinColumns = @JoinColumn(name = "vehicle_id")
+    )
+    public Set<Vehicle> vehicles;
 
     public Customer() {
 
     }
 
-    public Customer(String name, String email, String gender, String dob, String phoneNumber, String[] vehicles) {
+    public Customer(String name,
+                    String email,
+                    String gender,
+                    String dob,
+                    String phoneNumber,
+                    List<RentalStatus> rentals,
+                    Set<Vehicle> vehicles) {
         this.name = name;
         this.email = email;
         this.gender = gender;
         this.dob = dob;
         this.phoneNumber = phoneNumber;
+        this.rentals = rentals;
         this.vehicles = vehicles;
     }
 
@@ -80,11 +98,7 @@ public class Customer {
         this.gender = gender;
     }
 
-    public String[] getVehicles() {
-        return vehicles;
-    }
-
-    public void setVehicles(String[] vehicles) {
-        this.vehicles = vehicles;
+    public void setRentals(List<RentalStatus> rentals) {
+        this.rentals = rentals;
     }
 }
