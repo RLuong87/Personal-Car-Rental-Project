@@ -1,4 +1,4 @@
-package com.carrental.carrentalapp.controllers;
+package com.carrental.carrentalapp.controllers.vehicle;
 
 import com.carrental.carrentalapp.models.vehicle.Vehicle;
 import com.carrental.carrentalapp.repositories.VehicleRepository;
@@ -48,4 +48,5 @@ public class VehicleController {
         repository.deleteById(id);
         return new ResponseEntity<>("Deleted", HttpStatus.OK);
     }
+
 }

@@ -1,4 +1,4 @@
-package com.carrental.carrentalapp.controllers;
+package com.carrental.carrentalapp.controllers.customer;
 
 import com.carrental.carrentalapp.models.customer.Customer;
 import com.carrental.carrentalapp.repositories.CustomerRepository;

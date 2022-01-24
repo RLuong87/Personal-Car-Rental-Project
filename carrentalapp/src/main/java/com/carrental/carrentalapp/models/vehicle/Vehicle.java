@@ -1,7 +1,6 @@
 package com.carrental.carrentalapp.models.vehicle;
 
 import com.carrental.carrentalapp.models.customer.Customer;
-
 import javax.persistence.*;
 import java.util.Set;
 

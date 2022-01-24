@@ -1,0 +1,27 @@
+package com.carrental.carrentalapp.controllers.store;
+
+import com.carrental.carrentalapp.models.store.Store;
+import com.carrental.carrentalapp.repositories.StoreRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@CrossOrigin
+@RestController
+@RequestMapping("/api/stores")
+public class StoreController {
+
+    @Autowired
+    private StoreRepository repository;
+
+    @GetMapping
+    public ResponseEntity<List<Store>> getAll() {
+        return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
+    }
+}

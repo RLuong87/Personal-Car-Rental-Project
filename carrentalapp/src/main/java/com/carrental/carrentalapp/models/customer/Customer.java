@@ -2,7 +2,6 @@ package com.carrental.carrentalapp.models.customer;
 
 import com.carrental.carrentalapp.models.rentals.RentalStatus;
 import com.carrental.carrentalapp.models.vehicle.Vehicle;
-
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
@@ -98,7 +97,4 @@ public class Customer {
         this.gender = gender;
     }
 
-    public void setRentals(List<RentalStatus> rentals) {
-        this.rentals = rentals;
-    }
 }

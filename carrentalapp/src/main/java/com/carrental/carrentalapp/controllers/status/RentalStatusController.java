@@ -1,4 +1,4 @@
-package com.carrental.carrentalapp.controllers;
+package com.carrental.carrentalapp.controllers.status;
 
 import com.carrental.carrentalapp.models.rentals.RentalStatus;
 import com.carrental.carrentalapp.repositories.RentalStatusRepository;
