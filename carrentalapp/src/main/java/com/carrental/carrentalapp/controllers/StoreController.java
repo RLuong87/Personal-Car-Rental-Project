@@ -26,4 +26,6 @@ public class StoreController {
     public ResponseEntity<List<Store>> getAll() {
         return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
     }
+//
+
 }

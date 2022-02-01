@@ -1,6 +1,7 @@
 package com.carrental.carrentalapp.models.rentals;
 
 import com.carrental.carrentalapp.models.customer.Customer;
+import com.carrental.carrentalapp.models.vehicle.Vehicle;
 import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 
 import javax.persistence.*;
@@ -11,22 +12,20 @@ public class RentalStatus {
     @Id
     @GeneratedValue
     private Long id;
-
     @ManyToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     @JsonIncludeProperties({"name", "email", "gender"})
     private Customer customer;
-
     private String status;
     private String rentalData;
 
     public RentalStatus() {
     }
 
-    public RentalStatus(Customer customer, String status, String content) {
+    public RentalStatus(Customer customer, String status, String rentalData) {
         this.customer = customer;
         this.status = status;
-        this.rentalData = content;
+        this.rentalData = rentalData;
     }
 
     public Long getId() {

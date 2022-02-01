@@ -1,6 +1,8 @@
 package com.carrental.carrentalapp.models.vehicle;
 
 import com.carrental.carrentalapp.models.customer.Customer;
+import com.carrental.carrentalapp.models.rentals.RentalStatus;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -13,7 +15,6 @@ public class Vehicle {
     private String name;
     private Integer year;
     private String color;
-
     @ManyToMany
     @JoinTable(
             name = "customer_vehicle",

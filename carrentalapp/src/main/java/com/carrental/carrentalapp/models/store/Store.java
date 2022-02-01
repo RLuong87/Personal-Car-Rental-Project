@@ -1,6 +1,8 @@
 package com.carrental.carrentalapp.models.store;
 
 import com.carrental.carrentalapp.models.customer.Customer;
+import com.carrental.carrentalapp.models.vehicle.Vehicle;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,8 +14,7 @@ public class Store {
     private Long id;
     private String address;
     private String city;
-    @ManyToOne
-    private Location location;
+
     //TODO: Test the relationship between store and customers
     @OneToMany
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
@@ -25,12 +26,6 @@ public class Store {
     public Store(String address, String city) {
         this.address = address;
         this.city = city;
-    }
-
-    public Store(String address, String city, Location location) {
-        this.address = address;
-        this.city = city;
-        this.location = location;
     }
 
     public Long getId() {
@@ -63,13 +58,5 @@ public class Store {
 
     public void setCustomers(List<Customer> customers) {
         this.customers = customers;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
     }
 }
