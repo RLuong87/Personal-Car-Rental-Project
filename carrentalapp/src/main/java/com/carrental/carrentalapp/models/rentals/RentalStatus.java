@@ -1,6 +1,7 @@
 package com.carrental.carrentalapp.models.rentals;
 
 import com.carrental.carrentalapp.models.customer.Customer;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 
 import javax.persistence.*;
 
@@ -13,6 +14,7 @@ public class RentalStatus {
 
     @ManyToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    @JsonIncludeProperties({"name", "email", "gender"})
     private Customer customer;
 
     private String status;

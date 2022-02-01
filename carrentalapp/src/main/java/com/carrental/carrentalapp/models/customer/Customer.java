@@ -2,6 +2,8 @@ package com.carrental.carrentalapp.models.customer;
 
 import com.carrental.carrentalapp.models.rentals.RentalStatus;
 import com.carrental.carrentalapp.models.vehicle.Vehicle;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
@@ -18,9 +20,10 @@ public class Customer {
     private String dob;
     private String phoneNumber;
 //    private String[] vehicles;
-    @OneToMany
-    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private List<RentalStatus> rentals;
+
     @ManyToMany
     @JoinTable(
             name = "customer_vehicle",
@@ -38,14 +41,12 @@ public class Customer {
                     String gender,
                     String dob,
                     String phoneNumber,
-                    List<RentalStatus> rentals,
                     Set<Vehicle> vehicles) {
         this.name = name;
         this.email = email;
         this.gender = gender;
         this.dob = dob;
         this.phoneNumber = phoneNumber;
-        this.rentals = rentals;
         this.vehicles = vehicles;
     }
 
@@ -97,4 +98,12 @@ public class Customer {
         this.gender = gender;
     }
 
+
+    //    public Set<Vehicle> getVehicles() {
+//        return vehicles;
+//    }
+//
+//    public void setVehicles(Set<Vehicle> vehicles) {
+//        this.vehicles = vehicles;
+//    }
 }

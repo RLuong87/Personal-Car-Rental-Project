@@ -1,4 +1,4 @@
-package com.carrental.carrentalapp.controllers.store;
+package com.carrental.carrentalapp.controllers;
 
 import com.carrental.carrentalapp.models.store.Store;
 import com.carrental.carrentalapp.repositories.StoreRepository;
@@ -16,6 +16,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/stores")
 public class StoreController {
+
+    //TODO: create stores to add customers and vehicles
 
     @Autowired
     private StoreRepository repository;

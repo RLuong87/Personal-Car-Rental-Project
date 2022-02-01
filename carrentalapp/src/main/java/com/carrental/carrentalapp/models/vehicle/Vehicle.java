@@ -13,6 +13,7 @@ public class Vehicle {
     private String name;
     private Integer year;
     private String color;
+
     @ManyToMany
     @JoinTable(
             name = "customer_vehicle",
@@ -62,4 +63,12 @@ public class Vehicle {
     public void setColor(String color) {
         this.color = color;
     }
+
+//    public Set<Customer> getCustomers() {
+//        return customers;
+//    }
+//
+//    public void setCustomers(Set<Customer> customers) {
+//        this.customers = customers;
+//    }
 }

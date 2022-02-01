@@ -1,4 +1,4 @@
-package com.carrental.carrentalapp.controllers.status;
+package com.carrental.carrentalapp.controllers;
 
 import com.carrental.carrentalapp.models.rentals.RentalStatus;
 import com.carrental.carrentalapp.repositories.RentalStatusRepository;
@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
 import java.util.List;
 
 @CrossOrigin
@@ -28,10 +30,15 @@ public class RentalStatusController {
         return new ResponseEntity<>(repository.save(status), HttpStatus.CREATED);
     }
 
-//    @PutMapping("/{id}")
-//    public ResponseEntity<RentalStatus> updateOne(@RequestBody RentalStatus status) {
-//        similar to customer update
-//    }
+    @PutMapping("/{id}")
+    public @ResponseBody RentalStatus updateStatus(@PathVariable Long id, @RequestBody RentalStatus updates) {
+        RentalStatus status = repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        if (updates.getStatus() != null) status.setStatus(updates.getStatus());
+        if (updates.getRentalData() != null) status.setRentalData(updates.getRentalData());
+
+        return repository.save(status);
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id) {

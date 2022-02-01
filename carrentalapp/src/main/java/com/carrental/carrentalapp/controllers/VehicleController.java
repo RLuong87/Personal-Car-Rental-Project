@@ -1,11 +1,13 @@
-package com.carrental.carrentalapp.controllers.vehicle;
+package com.carrental.carrentalapp.controllers;
 
+import com.carrental.carrentalapp.models.customer.Customer;
 import com.carrental.carrentalapp.models.vehicle.Vehicle;
 import com.carrental.carrentalapp.repositories.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,10 +17,9 @@ import java.util.Optional;
 @RequestMapping("/api/vehicles")
 public class VehicleController {
 
-    /*
-    Routes to build
-    Get information for all cars (Customers will only see cars available)
-     */
+
+    //TODO: Routes to build --> Get information for all cars (Customers will only see cars available)
+
 
     @Autowired
     private VehicleRepository repository;
@@ -41,6 +42,18 @@ public class VehicleController {
     @PostMapping
     public Vehicle createCar(@RequestBody Vehicle newCar) {
         return repository.save(newCar);
+    }
+
+    @PutMapping("/{id}")
+    public @ResponseBody
+    Vehicle updateVehicle(@PathVariable Long id, @RequestBody Vehicle updates) {
+        Vehicle vehicle = repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        if (updates.getName() != null) vehicle.setName(updates.getName());
+        if (updates.getYear() != null) vehicle.setYear(updates.getYear());
+        if (updates.getColor() != null) vehicle.setColor(updates.getColor());
+
+        return repository.save(vehicle);
     }
 
     @DeleteMapping("/{id}")
