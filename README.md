@@ -1,3 +1,3 @@
-# Personal-Car-Rental-Project
+# Personal-Project
 
-A Car Rental application using Java SpringBoot.
+Personal application using Java SpringBoot and MySQL for the back end.
