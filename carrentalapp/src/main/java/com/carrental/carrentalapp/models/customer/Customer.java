@@ -3,7 +3,6 @@ package com.carrental.carrentalapp.models.customer;
 import com.carrental.carrentalapp.models.rentals.RentalStatus;
 import com.carrental.carrentalapp.models.vehicle.Vehicle;
 import com.fasterxml.jackson.annotation.JsonIncludeProperties;
-
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;

@@ -7,6 +7,7 @@ import javax.persistence.Id;
 @Entity
 public class Location {
 
+    // TODO: 2/1/22
     @Id
     @GeneratedValue
     private Long id;
