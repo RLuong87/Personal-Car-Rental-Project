@@ -14,7 +14,7 @@ public class Forecast {
     private Wind wind;
     private Clouds clouds;
     private Sys sys;
-//    private Weather[] weather;
+    private Weather[] weather;
 
     public static class Coord {
         private String lon;
@@ -283,11 +283,11 @@ public class Forecast {
         this.coord = coord;
     }
 
-//    public Weather[] getWeather() {
-//        return weather;
-//    }
-//
-//    public void setWeather(Weather[] weather) {
-//        this.weather = weather;
-//    }
+    public Weather[] getWeather() {
+        return weather;
+    }
+
+    public void setWeather(Weather[] weather) {
+        this.weather = weather;
+    }
 }

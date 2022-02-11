@@ -1,6 +1,7 @@
 package com.carrental.carrentalapp.controllers;
 
 import com.carrental.carrentalapp.api.response.Forecast;
+import com.carrental.carrentalapp.api.response.Weather;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +15,8 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/test")
 public class TestController {
 
-//    @Autowired
-//    private RestTemplate restTemplate;
+    @Autowired
+    private RestTemplate restTemplate;
 
     @Value("${FishingWeatherApp.app.weatherApiKey}")
     private String apiKey;
@@ -25,14 +26,14 @@ public class TestController {
         return "WEATHER TEST!";
     }
 
-    @GetMapping("/forecast/{q}")
-    public ResponseEntity<?> getForecast(RestTemplate restTemplate, @PathVariable String q) {
+    @GetMapping("/forecast/{id}")
+    public ResponseEntity<?> getForecast(@PathVariable String id) {
 
         String LOCATION = "Cranston";
         String uri = "https://api.openweathermap.org/data/2.5/weather?q=" + LOCATION + "&appid=" + apiKey;
 
-        Forecast forecast = restTemplate.getForObject(uri, Forecast.class);
+        Weather weather = restTemplate.getForObject(uri, Weather.class);
 
-        return ResponseEntity.ok(forecast);
+        return ResponseEntity.ok(weather);
     }
 }
