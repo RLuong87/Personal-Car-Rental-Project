@@ -113,6 +113,9 @@ public class WeatherAPI {
         private String gust_mph;
         private String gust_kph;
 
+        public Current() {
+        }
+
         private static class Condition {
 
             private String text;
@@ -145,9 +148,6 @@ public class WeatherAPI {
             public void setCode(String code) {
                 this.code = code;
             }
-        }
-
-        public Current() {
         }
 
         public String getLast_updated_epoch() {

@@ -59,6 +59,7 @@ public class TestController {
 
         Weather weather = restTemplate.getForObject(uri, Weather.class);
 
+        assert weather != null;
         return ResponseEntity.ok(weather.getLocation());
     }
 

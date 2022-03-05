@@ -7,16 +7,25 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherResponse {
 
-    private List<List<WeatherAPI>> location;
+    private WeatherAPI[] location;
 
     public WeatherResponse() {
     }
 
-    public List<List<WeatherAPI>> getLocation() {
+//    public Object getLocation() {
+//        return location;
+//    }
+//
+//    public void setLocation(Object location) {
+//        this.location = location;
+//    }
+
+
+    public WeatherAPI[] getLocation() {
         return location;
     }
 
-    public void setLocation(List<List<WeatherAPI>> location) {
+    public void setLocation(WeatherAPI[] location) {
         this.location = location;
     }
 }
